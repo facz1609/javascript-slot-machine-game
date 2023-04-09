@@ -1,0 +1,55 @@
+
+:root{
+    /* CSS variable */
+    --speed:5;
+}
+.machine{
+    background-color: peru;
+    border: dashed 3px brown;
+    height: 300px;
+    width: 900px;
+    margin: 50px;
+    display: flex;
+    
+}
+#inpSpeed{
+    font-size: 30pt;
+    margin-left: 30px;
+    width: 60px;
+}
+
+.slot{
+    border: solid 2px darkblue;
+    height: 250px;
+    width: 250px;
+    margin: 20px;
+    background-color: beige;
+    text-align: center;
+    font-size: 100pt;
+    line-height: 250px;
+    overflow: hidden;
+    /* "overflow: hidden" hides the extra part when the inner element goes out of bound */
+}
+
+.slot > .value{
+    animation-name: slotspin;
+    animation-iteration-count: infinite;
+    /* using CSS variable to change the speed of the slot machine transition */
+    animation-duration: calc(1s / var(--speed));
+}
+@keyframes slotspin {
+    0%{
+        transform: translateY(-200px);
+        -webkit-transform: translateY(-200px);
+        -moz-transform: translateY(-200px);
+        -ms-transform: translateY(-200px);
+        -o-transform: translateY(-200px);
+}
+    100%{
+        transform: translateY(200px);
+        -webkit-transform: translateY(200px);
+        -moz-transform: translateY(200px);
+        -ms-transform: translateY(200px);
+        -o-transform: translateY(200px);
+}
+}
