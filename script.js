@@ -10,12 +10,21 @@ function getRandomValue(){
     return values[Math.floor(Math.random()*7)]
 }
 
-setInterval(()=>{
-value1.innerText=getRandomValue()
-value2.innerText=getRandomValue()
-value3.innerText=getRandomValue()
-} , 100)
+let animationId;
+function updataAnimation(newSpeed){
+    if(animationId) clearInterval(animationId)
+    setInterval(()=>{
+    value1.innerText=getRandomValue()
+    value2.innerText=getRandomValue()
+    value3.innerText=getRandomValue()
+    } , 1000/newSpeed)
+
+}
 
 inpSpeed.onchange = (ev)=>{
-    // console.log('value changed',ev.target.value) => new data that we are gettingwv.target =previous value on which change happens
+    // console.log('value changed',ev.target.value) //=> new data that we are getting ev.target =previous value on which change happens
+
+    // document.documentElement ===> root of CSS
+    document.documentElement.style.setProperty('--speed' , ev.target.value)
+    updataAnimation(ev.target.value)
 }
